@@ -1,0 +1,55 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "make bin directory",
+            "command": "mkdir",
+            "args": [
+                "-p",
+                "${fileDirname}/bin",
+            ],
+            "presentation": {
+                "echo": false,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false,
+            },
+        },
+        {
+            "type": "shell",
+            "label": "C/C++: g++-8 build active file",
+            "command": "/usr/bin/g++-8",
+            "args": [
+                "-g",
+                "-std=c++17",
+                "${file}",
+                "-o",
+                "${fileDirname}/bin/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": false,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false,
+            },
+            "dependsOn": [
+                "make bin directory",
+            ],
+        }
+    ],
+    "version": "2.0.0"
+}
